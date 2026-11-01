@@ -4,7 +4,7 @@ from calc import add, divide
 
 
 def test_add():
-    assert add(2, 2) == 5
+    assert add(2, 2) == 7
 
 
 def test_divide():
