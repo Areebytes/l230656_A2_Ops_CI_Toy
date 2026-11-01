@@ -1,0 +1,17 @@
+name: Toy CI
+
+on: [push]                     # run on every push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest     # fresh Linux machine each run
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]   # same job, two Python versions in parallel
+    steps:
+      - uses: actions/checkout@v4          # download the repository
+      - uses: actions/setup-python@v5      # install the Python version from the matrix
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install pytest
+      - run: pytest -q
